@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function() 
 {
     Route::get('/', 'HomeController@index')->name('home');
+
+    // Category Routes
+    Route::resource('/category', 'CategoryController');
+    Route::prefix('/category')->name('category.')->group(function ()
+	{
+		Route::post('/datatables', 'CategoryController@datatables')->name('datatables');
+	});
 });
 
 Route::namespace('Auth')->group(function ()
