@@ -13,6 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('auth')->group(function() 
+{
+    Route::get('/', 'HomeController@index')->name('home');
+
+    // Category Routes
+    Route::resource('/category', 'CategoryController');
+    Route::prefix('/category')->name('category.')->group(function ()
+	{
+		Route::post('/datatables', 'CategoryController@datatables')->name('datatables');
+		Route::post('/select', 'CategoryController@select')->name('select');
+	});
+});
+
+Route::namespace('Auth')->group(function ()
+{
+	Route::get('/login', 'LoginController@showLoginForm');
+	Route::post('/login', 'LoginController@login')->name('login');
+	
+	Route::get('/logout', 'LoginController@logout')->name('logout');
 });
