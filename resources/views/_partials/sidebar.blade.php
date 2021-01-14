@@ -18,6 +18,10 @@
                     <a href="{{ route('home') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                 </li>
 
+                <h3 class="menu-title">Master Data</h3>
+                <li class="{{ active('category') }}">
+                    <a href="{{ route('category.index') }}"> <i class="menu-icon fa fa-tag"></i>Kategori Barang</a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
