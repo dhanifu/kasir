@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function()
     Route::prefix('/category')->name('category.')->group(function ()
 	{
 		Route::post('/datatables', 'CategoryController@datatables')->name('datatables');
+		Route::post('/select', 'CategoryController@select')->name('select');
 	});
 });
 
