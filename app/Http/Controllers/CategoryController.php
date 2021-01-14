@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Services\CategoryService;
-use App\Requests\Category\CreateCategoryRequest;
-use App\Requests\Category\UpdateCategoryRequest;
+use App\Http\Requests\Category\CreateCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -45,5 +45,10 @@ class CategoryController extends Controller
     public function datatables(): Object
     {
         return $this->category->getDatatables();
+    }
+
+    public function select(Request $request): Object
+    {
+        return $this->category->selectData($request->name);
     }
 }
