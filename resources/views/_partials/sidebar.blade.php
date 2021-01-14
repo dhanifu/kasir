@@ -7,8 +7,9 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="./">{{ site('name') }}</a>
-            <a class="navbar-brand hidden" href="./"><img src="{{ asset('sufee-admin/images/logo2.png') }}"
-                    alt="Logo"></a>
+            <a class="navbar-brand hidden" href="./">
+                K
+            </a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
