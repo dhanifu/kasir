@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <div class="modal">
+    <div class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="" method="post">
