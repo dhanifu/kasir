@@ -46,7 +46,7 @@ class StuffController extends Controller
 
     public function store(CreateStuffRequest $request): RedirectResponse
     {
-        $this->storeData($request->all());
+        $this->stuff->storeData($request->all());
         return redirect('stuff')->with('success', 'Sukse Menambah Barang');
     }
 
