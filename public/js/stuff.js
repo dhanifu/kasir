@@ -70,7 +70,7 @@ jQuery(function ($) {
         modal.find('[name=code]').val(code)
         modal.find('[name=name]').val(name)
         modal.find('[name=price]').val(price)
-        modal.find('[name=id]').append(`
+        modal.find('[name=category_id]').append(`
             <option value='${category.id}' selected>${category.name}</option>
         `)
 
