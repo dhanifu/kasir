@@ -32,6 +32,17 @@ Route::middleware('auth')->group(function()
 		Route::post('/select', 'StuffController@select')->name('select');
 		Route::post('/code', 'StuffController@selectCode')->name('select.code');
 	});
+
+	Route::prefix('/stock')->name('stock.')->group(function ()
+	{
+		Route::view('/', 'stock.index')->name('index');
+
+		Route::patch('/store', 'StockController@store')->name('store');
+		
+		Route::post('/datatables', 'StockController@datatables')->name('datatables');
+		
+		Route::delete('/destroy/{id}', 'StockController@destroy')->name('destroy');
+	});
 });
 
 Route::namespace('Auth')->group(function ()
