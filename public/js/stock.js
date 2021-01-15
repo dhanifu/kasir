@@ -57,6 +57,8 @@ jQuery(function ($) {
         $.each(inputs, (key, input) => {
             $(input).removeClass('is-invalid')
         })
+
+        form.reset()
     }
 
     const remove = id => {
@@ -69,7 +71,8 @@ jQuery(function ($) {
                 data: {
                     _token: csrf,
                     _method: 'DELETE'
-                }
+                },
+                success: res => success(res.success)
             })
         }
     }
