@@ -24,6 +24,14 @@ Route::middleware('auth')->group(function()
 		Route::post('/datatables', 'CategoryController@datatables')->name('datatables');
 		Route::post('/select', 'CategoryController@select')->name('select');
 	});
+
+	Route::resource('/stuff', 'StuffController');
+	Route::prefix('/stuff')->name('stuff.')->group(function () 
+	{
+		Route::post('/datatables', 'StuffController@datatables')->name('datatables');
+		Route::post('/select', 'StuffController@select')->name('select');
+		Route::post('/code', 'StuffController@selectCode')->name('select.code');
+	});
 });
 
 Route::namespace('Auth')->group(function ()
