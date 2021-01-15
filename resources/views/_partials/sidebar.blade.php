@@ -23,6 +23,9 @@
                 <li class="{{ active('category') }}">
                     <a href="{{ route('category.index') }}"> <i class="menu-icon fa fa-tag"></i>Kategori Barang</a>
                 </li>
+                <li class="{{ active('stuff', 'group') }}">
+                    <a href="{{ route('stuff.index') }}"> <i class="menu-icon fa fa-archive"></i>Barang</a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
