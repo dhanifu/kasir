@@ -6,28 +6,36 @@ use App\Repositories\UserRepository;
 
 use Yajra\Datatables\Datatables;
 
+use Auth;
+
 class UserService {
 
-	public $model;
+	protected $model;
 
 	public function __construct(UserRepository $user)
 	{
 		$this->model = $user;
 	}
 
-	public function storeData(object $data): Object
+	public function storeData(object $request): Object
 	{
-		$photo = $this->uploadPhoto($data->file);
-		$data->merge([
+		$photo = $this->uploadPhoto($request->photo);
+
+		$data = collect($request->except('photo'));
+		$data = $data->merge([
 			'photo' => $photo
 		]);
+
+		return $this->model->create($data->all());
 	}
 
-	public function updateData(int $id, object $data): Object
+	public function updateData(int $id, object $request): Object
 	{
-		if ($data->hasFile('file')) {
-			$photo = $this->uploadPhoto($data->file);
-			$data->merge([
+		$data = collect($request->except('photo'));
+
+		if ($request->hasFile('photo')) {
+			$photo = $this->uploadPhoto($request->photo);
+			$data = $data->merge([
 				'photo' => $photo
 			]);
 		}
@@ -40,14 +48,19 @@ class UserService {
 		return $this->model->delete($id);
 	}
 
+	public function countData(): Int
+	{
+		return $this->model->count();
+	}
+
 	public function uploadPhoto(object $file): String
 	{
-		$filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-		$filename = $filename . '_' . time() . '.' . $filename->extension();
+		$fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+		$fileName = $fileName.'_'.time().'.'.$file->extension();
 
-		$file->storeAs('public/image', $filename);
+		$file->storeAs('public/images', $fileName);
 
-		return $filename;
+		return $fileName;
 	}
 
 	public function updatePassword(string $password): Object
