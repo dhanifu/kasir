@@ -7,8 +7,9 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="./">{{ site('name') }}</a>
-            <a class="navbar-brand hidden" href="./"><img src="{{ asset('sufee-admin/images/logo2.png') }}"
-                    alt="Logo"></a>
+            <a class="navbar-brand hidden" href="./">
+                K
+            </a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -21,6 +22,9 @@
                 <h3 class="menu-title">Master Data</h3>
                 <li class="{{ active('category') }}">
                     <a href="{{ route('category.index') }}"> <i class="menu-icon fa fa-tag"></i>Kategori Barang</a>
+                </li>
+                <li class="{{ active('stuff', 'group') }}">
+                    <a href="{{ route('stuff.index') }}"> <i class="menu-icon fa fa-archive"></i>Barang</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
