@@ -22,5 +22,13 @@ class UserSeeder extends Seeder
             'role' => 'admin',
     		'photo' => 'default.jpg'
     	]);
+        
+        User::create([
+    		'name' => 'Kasir',
+    		'email' => 'kasir@kasir.com',
+    		'password' => 'kasir123',
+            'role' => 'kasir',
+    		'photo' => 'default.jpg'
+    	]);
     }
 }
