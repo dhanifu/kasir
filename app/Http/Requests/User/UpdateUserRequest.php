@@ -28,7 +28,7 @@ class UpdateUserRequest extends FormRequest
             'name' => 'required|string|unique:users,name,'.$this->id,
             'email' => 'required|email|unique:users,email,'.$this->id,
             'role' => 'required|in:admin,kasir',
-            'file' => 'image'
+            'photo' => 'image'
         ];
     }
 }

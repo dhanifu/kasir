@@ -28,7 +28,7 @@ class CreateUserRequest extends FormRequest
             'email' => 'required|string|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required|in:admin,kasir',
-            'file' => 'required|image'
+            'photo' => 'required|image'
         ];
     }
 }
