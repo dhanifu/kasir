@@ -26,6 +26,11 @@
                 <li class="{{ active('stuff', 'group') }}">
                     <a href="{{ route('stuff.index') }}"> <i class="menu-icon fa fa-archive"></i>Barang</a>
                 </li>
+
+                <h3 class="menu-title">Menu</h3>
+                <li class="{{ active('stock') }}">
+                    <a href="{{ route('stock.index') }}"> <i class="menu-icon fa fa-truck"></i>Stok</a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
