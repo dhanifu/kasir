@@ -26,11 +26,22 @@
                 <li class="{{ active('stuff', 'group') }}">
                     <a href="{{ route('stuff.index') }}"> <i class="menu-icon fa fa-archive"></i>Barang</a>
                 </li>
+                @can('isAdmin')
+                    <li class="{{ active('user', 'group') }}">
+                        <a href="{{ route('user.index') }}"> <i class="menu-icon fa fa-user"></i>Pengguna</a>
+                    </li>
+                @endcan
 
                 <h3 class="menu-title">Menu</h3>
                 <li class="{{ active('stock') }}">
                     <a href="{{ route('stock.index') }}"> <i class="menu-icon fa fa-truck"></i>Stok</a>
                 </li>
+
+                <h3 class="menu-title">Pengaturan</h3>
+                <li class="{{ active('change_password') }}">
+                    <a href="{{ route('change_password') }}"> <i class="menu-icon fa fa-key"></i>Ganti Password</a>
+                </li>
+                
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
