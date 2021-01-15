@@ -8,8 +8,6 @@ jQuery(function ($) {
             type: 'post',
             data: {
                 _token: csrf,
-            }, error: res => {
-                console.log(res)
             }
         },
         columns: [
@@ -66,13 +64,13 @@ jQuery(function ($) {
         const url = updateUrl.replace(':id', id)
 
         reset(form)
+        form.action = url
+
         modal.find('[name=id]').val(id)
         modal.find('[name=code]').val(code)
         modal.find('[name=name]').val(name)
         modal.find('[name=price]').val(price)
-        modal.find('[name=category_id]').append(`
-            <option value='${category.id}' selected>${category.name}</option>
-        `)
+        modal.find('[name=category_id]').append(`<option value='${category.id}' selected>${category.name}</option>`)
 
         modal.modal('show')
     }
@@ -86,9 +84,9 @@ jQuery(function ($) {
                 type: 'post',
                 data: {
                     _token: csrf,
-                    method: 'DELETE'
+                    _method: 'DELETE'
                 },
-                success: res => success(res.response)
+                success: res => success(res.success)
             })
         }
     }
