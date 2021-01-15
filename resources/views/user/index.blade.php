@@ -73,7 +73,7 @@
                             <label>Foto</label>
                             <div class="custom-file">
                                 <label class="custom-file-label">Upload</label>
-                                <input type="file" class="form-control custom-file-input" name="file">
+                                <input type="file" class="form-control custom-file-input" name="photo">
 
                                 <span class="invalid-feedback"></span>
                             </div>
