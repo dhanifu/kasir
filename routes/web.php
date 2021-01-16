@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function()
 
     Route::patch('/change_password', 'UserController@updatePassword')->name('change_password');
 	Route::view('/change_password', 'change_password');
+	Route::view('/setting', 'setting')->name('setting')->middleware('can:isAdmin');
 
 	Route::resource('/user', 'UserController');
 	Route::post('/user/datatables', 'UserController@datatables')->name('user.datatables');
