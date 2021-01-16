@@ -26,6 +26,10 @@ jQuery(function ($) {
 
     const reload = () => table.ajax.reload()
 
+    reloadTable.addEventListener('click', function () {
+        reload()
+    })
+
     const success = msg => {
         const alert = $('#alert')
         const modal = $('.modal')

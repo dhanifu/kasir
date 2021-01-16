@@ -30,7 +30,11 @@
             <div id="alert"></div>
             <div class="card">
                 <div class="card-header">
-                    <h2 class="h6 font-weight-bold mb-0 card-title">Data Kategori</h2>
+                    <h2 class="h6 font-weight-bold mb-0 card-title">Data Kategori
+                        <div class="float-right">
+                            <a href="javascript:void(0)" id="reloadTable" class="btn btn-success btn-sm mr-2">Reload</a>
+                        </div>
+                    </h2>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -95,7 +99,7 @@
 		const updateUrl = '{{ route('category.update', ':id') }}'
 		const deleteUrl = '{{ route('category.destroy', ':id') }}'
 		const csrf = '{{ csrf_token() }}'
-
+        const reloadTable = document.getElementById('reloadTable')
     </script>
 
     <script src="{{ asset('js/category.js') }}"></script>
