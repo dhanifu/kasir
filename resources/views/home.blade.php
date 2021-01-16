@@ -18,7 +18,7 @@
                     <i class="fa fa-archive"></i>
                 </div>
                 <h4 class="mb-0">
-                    <span class="count">99</span>
+                    <span class="count">{{ $totalStuff }}</span>
                 </h4>
                 <p class="text-light">Total Barang</p>
 
@@ -66,7 +66,7 @@
                     <i class="fa fa-users"></i>
                 </div>
                 <h4 class="mb-0">
-                    <span class="count">99</span>
+                    <span class="count">{{ $totalUser }}</span>
                 </h4>
                 <p class="text-light">Total Pengguna</p>
 
