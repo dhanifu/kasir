@@ -6,9 +6,9 @@
                 aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="./">{{ site('name') }}</a>
-            <a class="navbar-brand hidden" href="./">
-                K
+            <a class="navbar-brand" href="./" id="navbarbrand">{{ site('name') }}</a>
+            <a class="navbar-brand hidden" href="./" id="navbarbrandhide">
+                {{ substr(site('name'),0,1) }}
             </a>
         </div>
 
@@ -41,6 +41,11 @@
                 <li class="{{ active('change_password') }}">
                     <a href="{{ route('change_password') }}"> <i class="menu-icon fa fa-key"></i>Ganti Password</a>
                 </li>
+                @can('isAdmin')
+                    <li class="{{ active('setting') }}">
+                        <a href="{{ route('setting') }}"> <i class="menu-icon fa fa-cog"></i>Pengaturan</a>
+                    </li>
+                @endcan
                 
             </ul>
         </div><!-- /.navbar-collapse -->
