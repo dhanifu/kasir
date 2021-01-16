@@ -34,7 +34,7 @@
                     <i class="fa fa-money"></i>
                 </div>
                 <h4 class="mb-0">
-                    <span class="count">99</span>
+                    <span class="count">{{ $totalTransaction }}</span>
                 </h4>
                 <p class="text-light">Total Transaksi</p>
 
@@ -50,7 +50,7 @@
                     <i class="fa fa-calendar"></i>
                 </div>
                 <h4 class="mb-0">
-                    <span class="count">99</span>
+                    <span class="count">{{ $transactionToday }}</span>
                 </h4>
                 <p class="text-light">Transaksi Hari Ini</p>
 
