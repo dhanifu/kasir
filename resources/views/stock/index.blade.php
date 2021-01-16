@@ -46,7 +46,11 @@
 			<div id="alert"></div>
 			<div class="card">
 				<div class="card-header">
-					<h2 class="h6 card-title font-weight-bold mb-0">Riwayat Aktivitas</h2>
+					<h2 class="h6 card-title font-weight-bold mb-0">Riwayat Aktivitas
+						<div class="float-right">
+							<a href="javascript:void(0)" id="reloadTable" class="btn btn-success btn-sm mr-2">Reload</a>
+						</div>
+					</h2>
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
@@ -88,6 +92,7 @@
 		const deleteUrl = '{{ route('stock.destroy', ':id') }}'
 		const stuffUrl = '{{ route('stuff.select') }}'
 		const csrf = '{{ csrf_token() }}'
+		const reloadTable = document.getElementById('reloadTable')
 	</script>
 
 	<script src="{{ asset('js/stock.js') }}"></script>

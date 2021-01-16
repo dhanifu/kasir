@@ -15,7 +15,10 @@
 	<div class="card">
 		<div class="card-header d-flex justify-content-between align-items-center">
 			<h2 class="h6 font-weight-bold mb-0 card-title">Data Barang</h2>
-			<a href="{{ route('stuff.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+			<div class="float-right">
+				<a href="javascript:void(0)" id="reloadTable" class="btn btn-success btn-sm mr-2">Reload</a>
+				<a href="{{ route('stuff.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+			</div>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -108,6 +111,7 @@
 		const deleteUrl = '{{ route('stuff.destroy', ':id') }}'
 		const categoryUrl = '{{ route('category.select') }}'
 		const csrf = '{{ csrf_token() }}'
+		const reloadTable = document.getElementById('reloadTable')
 	</script>
 
 	<script src="{{ asset('js/stuff.js') }}"></script>
