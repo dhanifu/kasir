@@ -25,29 +25,15 @@ class StuffController extends Controller
         return view('stuff.index');
     }
 
-    public function datatables(): Object 
-    {
-        return $this->stuff->getDatatables();
-    }
-
     public function create(): View
     {
         return view('stuff.create');
     }
 
-    public function select(Request $request): Object 
-    {
-        return $this->stuff->selectData($request->name);
-    }
-    public function selectCode(Request $request): Object
-    {
-        return $this->stuff->selectByCode($request->code);
-    }
-
     public function store(CreateStuffRequest $request): RedirectResponse
     {
         $this->stuff->storeData($request->all());
-        return redirect('stuff')->with('success', 'Sukse Menambah Barang');
+        return redirect('stuff')->with('success', 'Sukses Menambah Barang');
     }
 
     public function show(int $id): View 
@@ -65,6 +51,25 @@ class StuffController extends Controller
     public function destroy(int $id): JsonResponse
     {
         $this->stuff->deleteData($id);
-        return response()->json(['success'=>'Sukses Menghapus Barang']);
+
+        return response()->json(['success' => 'Sukses Menghapus Barang']);
+    }
+
+    // Get Datatables
+    public function datatables(): Object
+    {
+        return $this->stuff->getDatatables();
+    }
+
+    // Select Data
+    public function select(Request $request): Object
+    {
+        return $this->stuff->selectData($request->name);
+    }
+
+    // Select Data By Code
+    public function selectCode(Request $request): Object
+    {
+        return $this->stuff->selectByCode($request->code);
     }
 }

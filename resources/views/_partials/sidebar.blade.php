@@ -36,6 +36,12 @@
                 <li class="{{ active('stock') }}">
                     <a href="{{ route('stock.index') }}"> <i class="menu-icon fa fa-truck"></i>Stok</a>
                 </li>
+                <li class="{{ active('transaction', 'group') }}">
+                    <a href="{{ route('transaction.index') }}"> <i class="menu-icon fa fa-money"></i>Transaksi</a>
+                </li>
+                <li class="{{ active('report', 'group') }}">
+                    <a href="{{ route('report') }}"> <i class="menu-icon fa fa-file"></i>Laporan</a>
+                </li>
 
                 <h3 class="menu-title">Pengaturan</h3>
                 <li class="{{ active('change_password') }}">

@@ -31,7 +31,7 @@ class Repository {
 
     public function select($name): Object
 	{
-		return $this->model->where('name', 'like', "%{$name}%")->get(['id', 'name as text']);
+		return $this->model->where('name', 'like', '%'.$name.'%')->get(['id', 'name as text']);
 	}
 
 	public function where(string $columns, $value): Object

@@ -28,25 +28,24 @@ class StuffRepository extends Repository {
         return $stuff;
     }
 
-    public function selectByCode($code): Object 
-    {
-        return $this->model->where('code', 'like', "%{$code}%")
-                    ->get(['id', 'code as text', 'name', 'price', 'stock']);
-    }
+	public function selectByCode($code): Object
+	{
+		return $this->model->where('code', 'like', '%'.$code.'%')->get(['id', 'code as text', 'name', 'price', 'stock']);
+	}
 
-    public function getByCode($code): Object 
-    {
-        return $this->model->findWhere('code', $code);
-    }
+	public function getByCode($code): Object
+	{
+		return $this->findWhere('code', $code);
+	}
 
-    public function getStock(int $id): Int
-    {
-        return $this->model->findOrFail($id)->value('stock');
-    }
+	public function getStock(int $id): Int
+	{
+		return $this->model->findOrFail($id)->value('stock');
+	}
 
-    public function get(): Object
-    {
-        return $this->model->with('category')->latest()->get();
-    }
+	public function get(): Object
+	{
+		return $this->model->with('category')->latest()->get();
+	}
 
 }

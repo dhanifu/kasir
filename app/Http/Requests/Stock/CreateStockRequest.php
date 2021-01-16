@@ -23,7 +23,7 @@ class CreateStockRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(StuffService $stuff)
     {
         $rules = [
             'stuff_id' => 'required|exists:stuffs,id',

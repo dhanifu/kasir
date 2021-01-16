@@ -15,11 +15,6 @@ class StockController extends Controller
 	public function __construct(StockService $stock)
 	{
 		$this->stock = $stock;
-    }
-    
-	public function datatables(): Object
-	{
-		return $this->stock->getDatatables();
 	}
 
 	public function store(CreateStockRequest $request): JsonResponse
@@ -34,5 +29,10 @@ class StockController extends Controller
 		$this->stock->deleteData($id);
 
 		return response()->json(['success' => 'Sukses Menghapus Stok']);
+	}
+
+	public function datatables(): Object
+	{
+		return $this->stock->getDatatables();
 	}
 }
