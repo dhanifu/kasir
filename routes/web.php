@@ -17,6 +17,7 @@ Route::middleware('auth')->group(function()
 {
     Route::get('/', 'HomeController@index')->name('home');
 
+	Route::view('/report', 'report')->name('report');
     Route::patch('/change_password', 'UserController@updatePassword')->name('change_password');
 	Route::view('/change_password', 'change_password');
 	Route::view('/setting', 'setting')->name('setting')->middleware('can:isAdmin');
@@ -49,6 +50,18 @@ Route::middleware('auth')->group(function()
 		Route::post('/datatables', 'StockController@datatables')->name('datatables');
 		
 		Route::delete('/destroy/{id}', 'StockController@destroy')->name('destroy');
+	});
+
+	// Transaction
+	Route::prefix('/transaction')->name('transaction.')->group(function ()
+	{
+		Route::view('/', 'transaction.index')->name('index');
+		
+		Route::get('/detail/{invoice}', 'TransactionController@detail')->name('detail');
+		Route::get('/print/{invoice}', 'TransactionController@print')->name('print');
+		
+		Route::post('/datatables', 'TransactionController@datatables')->name('datatables');
+		Route::delete('/destroy/{id}', 'TransactionController@destroy')->name('destroy');
 	});
 });
 
