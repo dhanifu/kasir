@@ -6,23 +6,24 @@ jQuery(function ($) {
         ajax: {
             url: ajaxUrl,
             type: 'post',
-            data: {
-                _token: csrf,
+            data: { _token: csrf },
+            error: res => {
+                console.log(res)
             }
         },
         columns: [
             { data: 'DT_RowIndex' },
-            { data: 'barcode' },
-            { data: 'code' },
-            { data: 'name' },
-            { data: 'stock' },
-            { data: 'price' },
+            { data: 'stuff.name' },
+            { data: 'type' },
+            { data: 'total' },
+            { data: 'date' },
             {
                 data: 'action',
                 orderable: false,
                 searchable: false
             }
-        ]
+        ],
+        lengthMenu: [[5, 10, 50, -1], [5, 10, 50, 'All']]
     })
 
     const reload = () => table.ajax.reload()
@@ -31,18 +32,20 @@ jQuery(function ($) {
         const alert = $('#alert')
         const modal = $('.modal')
 
-        alert.html(`<div class="alert alert-success alert-dismissible">
-			${msg}
-			<button class="close" data-dismiss="alert">&times;</button>
-        </div>`)
+        alert.html(`
+            <div class="alert alert-success alert-dismissable">
+                ${msg}
+                <button class="close" data-dismiss="alert">&times;</button>
+            </div>
+        `)
 
         modal.modal('hide')
         reload()
     }
+
     const error = (errors, form) => {
         $.each(errors, (name, msg) => {
             const input = $(form).find(`[name=${name}]`)
-
             input.addClass('is-invalid')
             input.next('.invalid-feedback').html(msg)
         })
@@ -58,25 +61,8 @@ jQuery(function ($) {
         form.reset()
     }
 
-    const edit = ({ id, name, code, price, category }) => {
-        const modal = $('.modal')
-        const form = modal.find('form')[0]
-        const url = updateUrl.replace(':id', id)
-
-        reset(form)
-        form.action = url
-
-        modal.find('[name=id]').val(id)
-        modal.find('[name=code]').val(code)
-        modal.find('[name=name]').val(name)
-        modal.find('[name=price]').val(price)
-        modal.find('[name=category_id]').append(`<option value='${category.id}' selected>${category.name}</option>`)
-
-        modal.modal('show')
-    }
-
     const remove = id => {
-        if (confirm("Yakin akan menghapus ini?")) {
+        if (confirm("Yakin untuk menghapus data ini?")) {
             const url = deleteUrl.replace(':id', id)
 
             $.ajax({
@@ -92,30 +78,14 @@ jQuery(function ($) {
     }
 
     $('tbody').on('click', 'button', function () {
-        const action = $(this).data('action')
-        const data = table.row($(this).parents('tr')).data()
-
-        switch (action) {
-            case 'edit':
-                edit(data)
-                break
-            case 'remove':
-                remove(data.id)
-                break
-        }
+        const id = table.row($(this).parents('tr')).data().id
+        remove(id)
     })
 
-    $('[name=price]').on('keyup', function () {
-        const number = Number(this.value.replace(/\D/g, ''))
-        const price = new Intl.NumberFormat().format(number)
-
-        this.value = price
-    })
-
-    $('[name=category_id]').select2({
-        placeholder: 'Kategori',
+    $('[name=stuff_id]').select2({
+        placeholder: 'Barang',
         ajax: {
-            url: categoryUrl,
+            url: stuffUrl,
             type: 'post',
             data: params => ({
                 name: params.term,
@@ -141,7 +111,6 @@ jQuery(function ($) {
             },
             error: err => {
                 const errors = err.responseJSON.errors
-
                 error(errors, this)
             }
         })

@@ -17,6 +17,12 @@ Route::middleware('auth')->group(function()
 {
     Route::get('/', 'HomeController@index')->name('home');
 
+    Route::patch('/change_password', 'UserController@updatePassword')->name('change_password');
+	Route::view('/change_password', 'change_password');
+
+	Route::resource('/user', 'UserController');
+	Route::post('/user/datatables', 'UserController@datatables')->name('user.datatables');
+
     // Category Routes
     Route::resource('/category', 'CategoryController');
     Route::prefix('/category')->name('category.')->group(function ()

@@ -18,7 +18,7 @@
 
                     <div class="dropdown-divider"></div>
 
-                    <a class="nav-link" href="{{-- route('change_password') --}}"><i class="fa fa-key"></i> Ganti
+                    <a class="nav-link" href="{{ route('change_password') }}"><i class="fa fa-key"></i> Ganti
                         Password</a>
 
                     <a class="nav-link" href="{{-- route('setting.index') --}}"><i class="fa fa-cog"></i> Settings</a>
