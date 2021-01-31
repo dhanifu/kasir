@@ -69,6 +69,7 @@ jQuery(function ($) {
 
         reset(form)
         form.action = url
+        price = price.replace('Rp ', '')
 
         modal.find('[name=id]').val(id)
         modal.find('[name=code]').val(code)
@@ -113,7 +114,7 @@ jQuery(function ($) {
         const number = Number(this.value.replace(/\D/g, ''))
         const price = new Intl.NumberFormat().format(number)
 
-        this.value = price
+        this.value = price.split('.').join(',')
     })
 
     $('[name=category_id]').select2({
