@@ -78,7 +78,7 @@
 				const number = Number(this.value.replace(/\D/g, ''))
 				const price = new Intl.NumberFormat().format(number)
 				
-				this.value = price
+				this.value = price.split('.').join(',')
 			})
 			$('select').select2({
 				placeholder: 'Kategori',
